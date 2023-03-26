@@ -21,8 +21,8 @@ void    size_exec(t_exec **exec)
         }
         size++;
     }
-    //printf("size: %d\n", size);
-    (*exec)->arr_arg = malloc(size * sizeof(char *));
+    printf("size: %d\n", size);
+    (*exec)->arr_arg = malloc((size + 1) * sizeof(char *) );
     (*exec)->arr_arg[size] = NULL;
 }
 
@@ -52,10 +52,12 @@ void    dup_array(t_exec **exec)
         (*exec)->arr_arg[j] = ft_substr((*exec)->str_exec, start, i - start);
         j++;
     }
+    
     j = 0;
     while((*exec)->arr_arg[j])
     {
         printf("exec->arr_arg[%d]: %s\n", j, (*exec)->arr_arg[j]);
         j++;
     }
+    
 }

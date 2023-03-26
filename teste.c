@@ -37,6 +37,7 @@ t_exec  *ft_exec_add(t_exec **stk, int pos_exec)
     return (new);
 }
 
+
 void    parse_qtt_exec(t_exec **exec, char *cmd_ln)
 {
     int i;
@@ -51,7 +52,7 @@ void    parse_qtt_exec(t_exec **exec, char *cmd_ln)
             quotes_in = quotes_out(&cmd_ln[i], cmd_ln[i]);
             if(quotes_in == 0)
             {
-                printf("Error: quotes missing\n");
+                ft_putstr_fd("Error: quotes missing\n", 2);
                 ft_stack_clear(exec);
                 break ;
             }
@@ -67,6 +68,7 @@ int     command_line_parse(char *cmd_ln)
 {
     t_exec *exec;
     int exec_qtd;
+    t_exec *aux;
 
     exec_qtd = 0;
     exec = NULL;
@@ -74,6 +76,7 @@ int     command_line_parse(char *cmd_ln)
     parse_qtt_exec(&exec, cmd_ln);
     if(exec == NULL)
         return (1); 
+    aux = exec;
     while(exec)
     {
         if(exec->next)
@@ -83,10 +86,13 @@ int     command_line_parse(char *cmd_ln)
         //printf("exec->str_exec: %s \n", exec->str_exec);
         //ft_args_add(&exec->args, &cmd_ln[exec->pos_exec]);
         dup_array(&exec);
-        execve_teste(&exec);
         exec_qtd++; // só ver a quantidade de execuções criadas
         exec = exec->next;
     }
+    exec = aux;
+    execve_teste(&exec);
+    
+    ft_stack_clear(&aux);
     //printf("exec_qtd: %d\n", exec_qtd);
     return (0);
 }
@@ -101,6 +107,8 @@ int main()
     {
         ret = readline(">");
         command_line_parse(ret);
+        free(ret);
+        ret = NULL;
        // execve_teste();
     }
 }

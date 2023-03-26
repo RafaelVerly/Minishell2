@@ -17,10 +17,10 @@ typedef struct s_args
 
 typedef struct s_exec
 {
-
     t_args *args;
     char    **arr_arg;
     char    *str_exec;
+    int     type;
     struct s_exec *prev;
     struct s_exec *next;
     int pos_exec;
@@ -48,7 +48,7 @@ t_exec  *ft_exec_add(t_exec **stk, int pos_exec);
 void    ft_stack_clear(t_exec **stk);
 void    execve_teste();
 void    ft_args_add(t_args **args, char *line);
-int quotes_out(char *cmd_ln, char quote);
+int     quotes_out(char *cmd_ln, char quote);
 void    dup_array(t_exec **exec);
 void    execve_teste(t_exec **exec);
 

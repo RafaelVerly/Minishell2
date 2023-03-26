@@ -8,6 +8,7 @@ void    ft_stack_clear(t_exec **stk)
     {
         temp = (*stk)->next;
         free(*stk);
+        free((*stk)->arr_arg);
         *stk = NULL;
         (*stk) = temp;
     }
