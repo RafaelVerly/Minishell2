@@ -1,1 +1,28 @@
+pra implementar minhas funções vou precisar tratar as strings de modo que elas possam ir pro array de execução de maneira adequada pra simular
+o comando real
 
+aprender sobre como funciona os comandos reais 
+aprender a fazer a expansão de variável
+
+expansão de parâmetro de um variável em bash é manipular uma variável de diferentes formas. Exemplos: Criar um variável, printar o valor de uma variável no prompt, ver se uma variável existe, printar o valor formatado de uma variável. Essas manipulações são feitas combinando o caracter $(que indica que o conteúdo da frente é uma variável), o nome da variável e caracteres especias que indicam qual é o processo que quero realizar nql variável. Para ativar o recurso de expansão é necessário utilizar o identificador da variável entre chaves. 
+
+já entendi como usa o comando cd 
+agora preciso descobrir uma forma de tirar as aspas dos argumentos de maneira adequada
+
+
+
+echo -n vasco    	->   Não pula linha (atributo é reconhecido)
+echo ------n vasco      ->   ------n vasco
+echo -nnnnnn vasco	->   Não pula linha(atributo é reconhecido)
+echo "-nnnn" vasco	->   Não pula linha(atributo é reconhecido) #com aspas simples tbm
+
+então tudo que estiver depois de echo devo tirar as aspas. 
+verificar se o atributo -n é válido, inclusive se existe mais de um n 
+ 
+Variáveis de ambiente e sua expansão
+${Vasco?não existe} | wc     -> Esse comando envia printa uma msg de erro no prompt dizendo que Vasco não existe, ou seja, 
+				a syntaxe ${Vasco? não existe} é o suficiente pra ser entendido como um comando que dá erro e é direcionado
+				pro output padrão e não pro pipe
+
+O que ainda precisa ser feito?
+aprender a expandir variáveis, só não expande se estiver envolta de aspas simples 
